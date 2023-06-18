@@ -5,6 +5,7 @@ import { Roboto } from 'next/font/google'
 import { DashboardCard } from '@/components/DashboardCard'
 import { ArrowBigUpDash } from 'lucide-react'
 import { Button } from '@/components/Button'
+import { Input } from '@/components/Input'
 
 const roboto = Roboto({
   weight: ['400', '500'],
@@ -43,6 +44,17 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             transactionType={'outcome'}
             lastTransactionDate="12/12/2023"
           />
+        </div>
+
+        <div>
+          <div>
+            <span>Transações</span>
+            <span>4 itens</span>
+          </div>
+
+          <div>
+            <Input placeholder="Busque uma transação" />
+          </div>
         </div>
 
         <div>{children}</div>
