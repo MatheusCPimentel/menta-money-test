@@ -19,17 +19,19 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={roboto.className}>
-      <body className="m-auto max-w-screen-lg bg-gray-1 px-6 py-16 text-gray-6">
-        <header className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
+      <body className="m-auto max-w-screen-lg bg-gray-2 px-6 py-16 text-gray-6">
+        <header className="relative z-10 flex items-center justify-between pb-10">
+          <div className="flex items-center gap-2 ">
             <ArrowBigUpDash size={24} />
-            <span className="text-xl font-bold">DT Money</span>
+            <span className="text-xl font-bold">MentaMoney</span>
           </div>
 
           <Button>Nova transação</Button>
         </header>
 
-        <div className={'flex items-center gap-5'}>
+        <div className="absolute top-0 -mx-6 h-52 w-full bg-gray-1" />
+
+        <div className={'relative inline-flex items-center gap-5'}>
           <DashboardCard
             amount={200}
             transactionType={'income'}

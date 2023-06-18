@@ -28,7 +28,7 @@ export const DashboardCard: FC<DashboardCardProps> = (props) => {
   )
 
   return (
-    <div className="w-72 rounded-md bg-gray-3 p-6 pr-8">
+    <div className="w-80 rounded-md bg-gray-3 p-6 pl-8">
       <div className="flex items-center justify-between pb-3">
         {transactionType === 'income' ? (
           <>
@@ -45,7 +45,7 @@ export const DashboardCard: FC<DashboardCardProps> = (props) => {
 
       <h1>{formattedCurrency}</h1>
 
-      <span className="block pt-1 text-gray-5">
+      <span className="mt-1 block text-gray-5">
         Última entrada em {formattedLastTransactionDate}
       </span>
     </div>
