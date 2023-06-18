@@ -5,15 +5,15 @@ import { ptBR } from 'date-fns/locale'
 
 interface DashboardCardProps {
   amount: number
-  isIncomeTransactionType: boolean
+  transactionType: 'income' | 'outcome'
   lastTransactionDate: string
 }
 
 export const DashboardCard: FC<DashboardCardProps> = (props) => {
   const {
     amount = 0,
-    lastTransactionDate = '2023-06-17',
-    isIncomeTransactionType = true,
+    lastTransactionDate = '',
+    transactionType = 'income',
   } = props
 
   const formattedCurrency = new Intl.NumberFormat('pt-BR', {
@@ -30,7 +30,7 @@ export const DashboardCard: FC<DashboardCardProps> = (props) => {
   return (
     <div className="w-72 rounded-md bg-gray-3 p-6 pr-8">
       <div className="flex items-center justify-between pb-3">
-        {isIncomeTransactionType ? (
+        {transactionType === 'income' ? (
           <>
             <span>Entradas</span>
             <ArrowUpCircle className="text-green-light" size={26} />
