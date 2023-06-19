@@ -1,7 +1,7 @@
 import { ArrowDownCircle, ArrowUpCircle } from 'lucide-react'
 import { FC } from 'react'
-import { format } from 'date-fns'
-import { ptBR } from 'date-fns/locale'
+import { formatCurrency } from '@/utils/formatCurrency'
+import { formatDate } from '@/utils/formatDate'
 
 interface DashboardCardProps {
   amount: number
@@ -16,16 +16,12 @@ export const DashboardCard: FC<DashboardCardProps> = (props) => {
     transactionType = 'income',
   } = props
 
-  const formattedCurrency = new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  }).format(amount)
+  const formattedCurrency = formatCurrency({ amount })
 
-  const formattedLastTransactionDate = format(
-    new Date(lastTransactionDate),
-    "dd 'de' MMMM",
-    { locale: ptBR },
-  )
+  const formattedLastTransactionDate = formatDate({
+    date: lastTransactionDate,
+    isFullString: true,
+  })
 
   return (
     <div className="w-80 rounded-md bg-gray-3 p-6 pl-8">
