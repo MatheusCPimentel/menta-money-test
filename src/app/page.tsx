@@ -22,7 +22,6 @@ export default function Home() {
 
       {isNewTransactionModalOpen ? (
         <NewTransactionModal
-          onSave={() => undefined}
           onClose={() => setIsNewTransactionModalOpen(false)}
         />
       ) : null}
