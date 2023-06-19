@@ -6,8 +6,8 @@ import { DashboardCard } from '@/components/DashboardCard'
 import { ArrowBigUpDash, Search } from 'lucide-react'
 import { Button } from '@/components/Button'
 import { Input } from '@/components/Input'
-import { TransactionCard } from '@/components/TransactionCard'
-import { Categories } from '@/types/categories'
+
+import { Transactions } from '@/components/Transactions'
 
 const roboto = Roboto({
   weight: ['400', '500'],
@@ -65,47 +65,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
         <div className="flex flex-col justify-center"></div>
 
-        <div className="mt-3 flex flex-col gap-3">
-          <TransactionCard
-            amount={20}
-            category={Categories.Others}
-            date="10/30/23"
-            title="Test"
-            transactionType="income"
-          />
-
-          <TransactionCard
-            amount={20}
-            category={Categories.Others}
-            date="10/30/23"
-            title="Test"
-            transactionType="income"
-          />
-
-          <TransactionCard
-            amount={20}
-            category={Categories.Others}
-            date="10/30/23"
-            title="Test"
-            transactionType="income"
-          />
-
-          <TransactionCard
-            amount={20}
-            category={Categories.Others}
-            date="10/30/23"
-            title="Test"
-            transactionType="income"
-          />
-
-          <TransactionCard
-            amount={20}
-            category={Categories.Others}
-            date="10/30/23"
-            title="Test"
-            transactionType="income"
-          />
-        </div>
+        <Transactions />
 
         <div>{children}</div>
       </body>

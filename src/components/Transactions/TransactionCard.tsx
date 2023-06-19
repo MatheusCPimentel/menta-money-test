@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Transaction } from '@/types/transaction'
-import { Categories } from '@/types/categories'
+import { Categories, transactionCategoryMapper } from '@/types/categories'
 import { Calendar, Tag } from 'lucide-react'
 import { formatCurrency } from '@/utils/formatCurrency'
 import { formatDate } from '@/utils/formatDate'
@@ -34,7 +34,7 @@ export const TransactionCard: FC<Transaction> = (props) => {
       <div className="flex items-center justify-between text-gray-5">
         <div className="flex items-center gap-1">
           <Tag size={16} />
-          <span>{category}</span>
+          <span>{transactionCategoryMapper[category]}</span>
         </div>
 
         <div className="flex items-center gap-1">

@@ -1,0 +1,84 @@
+{
+  "transactions": [
+    {
+      "id": "e3das-51dsa-15sad",
+      "amount": 100,
+      "transactionType": "income",
+      "category": "transport",
+      "title": "Escola",
+      "date": "10-23-2023"
+    },
+    {
+      "id": "fsdg4-4dsg5-6fds",
+      "amount": 50,
+      "transactionType": "outcome",
+      "category": "food",
+      "title": "Restaurante",
+      "date": "10-25-2023"
+    },
+    {
+      "id": "89dfg-78dfg-12dfg",
+      "amount": 2000,
+      "transactionType": "income",
+      "category": "salary",
+      "title": "Salário",
+      "date": "10-27-2023"
+    },
+    {
+      "id": "12hjk-45hjk-78hjk",
+      "amount": 500,
+      "transactionType": "outcome",
+      "category": "rent",
+      "title": "Aluguel",
+      "date": "10-29-2023"
+    },
+    {
+      "id": "tgf67-987hb-43fgh",
+      "amount": 300,
+      "transactionType": "income",
+      "category": "sale",
+      "title": "Venda",
+      "date": "10-31-2023"
+    },
+    {
+      "id": "098nbc-765xzs-321vbn",
+      "amount": 80,
+      "transactionType": "outcome",
+      "category": "shopping",
+      "title": "Compras",
+      "date": "11-02-2023"
+    },
+    {
+      "id": "yt65r-2ws3x-4rf5v",
+      "amount": 150,
+      "transactionType": "income",
+      "category": "travel",
+      "title": "Viagem",
+      "date": "11-04-2023"
+    },
+    {
+      "id": "mju8i-3wsxc-9ijnh",
+      "amount": 120,
+      "transactionType": "outcome",
+      "category": "transport",
+      "title": "Transporte",
+      "date": "11-06-2023"
+    },
+    {
+      "id": "cvb3r-6tgb8-0jhn2",
+      "amount": 70,
+      "transactionType": "income",
+      "category": "food",
+      "title": "Supermercado",
+      "date": "11-08-2023"
+    },
+    {
+      "id": "1qaz2-3wsx4-5rfv6",
+      "amount": 250,
+      "transactionType": "outcome",
+      "category": "others",
+      "title": "Outros",
+      "date": "11-10-2023"
+    }
+  ]
+}
