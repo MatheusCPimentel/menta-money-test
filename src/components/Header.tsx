@@ -1,7 +1,14 @@
 import { ArrowBigUpDash } from 'lucide-react'
 import { Button } from './Button'
+import { FC } from 'react'
 
-export const Header = () => {
+interface HeaderProps {
+  handleOpenNewTransactionModal: () => void
+}
+
+export const Header: FC<HeaderProps> = (props) => {
+  const { handleOpenNewTransactionModal = () => undefined } = props
+
   return (
     <header className="relative z-10 flex items-center justify-between pb-10">
       <div className="flex items-center gap-2 ">
@@ -9,7 +16,9 @@ export const Header = () => {
         <span className="text-xl font-bold">MentaMoney</span>
       </div>
 
-      <Button>Nova transação</Button>
+      <Button onClick={() => handleOpenNewTransactionModal()}>
+        Nova transação
+      </Button>
     </header>
   )
 }

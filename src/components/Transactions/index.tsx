@@ -26,6 +26,7 @@ export const Transactions = () => {
           `/transactions?_page=${currentPage}&_limit=10`,
         )
 
+        setSearchInputValue('')
         setTransactions(transactions)
         setTransactionsToShow(transactions)
       } catch (error) {
@@ -74,16 +75,20 @@ export const Transactions = () => {
       </div>
 
       <main className="mt-3 flex flex-col gap-3">
-        {transactionsToShow.map((transaction) => (
-          <TransactionCard
-            key={transaction.id}
-            amount={transaction.amount}
-            category={transaction.category}
-            date={transaction.date}
-            title={transaction.title}
-            transactionType={transaction.transactionType}
-          />
-        ))}
+        {transactionsToShow?.length > 0 ? (
+          transactionsToShow?.map((transaction) => (
+            <TransactionCard
+              key={transaction.id}
+              amount={transaction.amount}
+              category={transaction.category}
+              date={transaction.date}
+              title={transaction.title}
+              transactionType={transaction.transactionType}
+            />
+          ))
+        ) : (
+          <span>Nenhum resultado encontrado.</span>
+        )}
       </main>
 
       <Pagination

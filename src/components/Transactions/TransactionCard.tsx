@@ -18,7 +18,7 @@ export const TransactionCard: FC<Transaction> = (props) => {
   const formattedDate = formatDate({ date })
 
   return (
-    <div className="w-full rounded-md bg-gray-3 p-5">
+    <div className="w-full rounded-md bg-gray-3 p-5 transition-colors hover:bg-gray-4">
       <span className="block">{title}</span>
 
       <span
