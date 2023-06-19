@@ -3,13 +3,13 @@ import { FC } from 'react'
 import { formatCurrency } from '@/utils/formatCurrency'
 import { formatDate } from '@/utils/formatDate'
 
-interface DashboardCardProps {
+interface SummaryCardProps {
   amount: number
   transactionType: 'income' | 'outcome'
   lastTransactionDate: string
 }
 
-export const DashboardCard: FC<DashboardCardProps> = (props) => {
+export const SummaryCard: FC<SummaryCardProps> = (props) => {
   const {
     amount = 0,
     lastTransactionDate = '',
