@@ -4,7 +4,6 @@ import { api } from '@/api/api'
 import { Transaction } from '@/types/transaction'
 import { useEffect, useState } from 'react'
 import { TransactionCard } from './TransactionCard'
-import { Search } from 'lucide-react'
 import { Input } from '../Input'
 import { Pagination } from '../Pagination'
 
@@ -16,6 +15,9 @@ export const Transactions = () => {
   const [transactionsToShow, setTransactionsToShow] = useState<Transaction[]>(
     [],
   )
+
+  // eslint-disable-next-line no-undef
+  const [debounceTime, setDebounceTime] = useState<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     async function getTransactions() {
@@ -34,14 +36,24 @@ export const Transactions = () => {
     getTransactions()
   }, [currentPage])
 
-  const handleSearchTransaction = () => {
-    const sanitizedSearchInputValue = searchInputValue?.toLowerCase().trim()
+  const handleSearchTransaction = (inputValue: string) => {
+    setSearchInputValue(inputValue)
 
-    const filteredTransactions = transactions.filter((transaction) =>
-      transaction.title.toLowerCase().includes(sanitizedSearchInputValue),
-    )
+    if (debounceTime) clearTimeout(debounceTime)
 
-    setTransactionsToShow(filteredTransactions)
+    const timeout = setTimeout(() => {
+      const sanitizedSearchInputValue = inputValue?.toLowerCase().trim()
+
+      const filteredTransactions = transactions.filter((transaction) =>
+        transaction.title.toLowerCase().includes(sanitizedSearchInputValue),
+      )
+
+      setTransactionsToShow(filteredTransactions)
+
+      console.log(inputValue)
+    }, 500)
+
+    setDebounceTime(timeout)
   }
 
   return (
@@ -52,21 +64,13 @@ export const Transactions = () => {
           <span className="text-gray-5">{transactions?.length || 0} itens</span>
         </div>
 
-        <div className="flex items-center gap-2">
-          <Input
-            placeholder="Busque uma transação"
-            value={searchInputValue}
-            onChange={(e) => setSearchInputValue(e?.currentTarget?.value)}
-            onKeyDown={(e) => e.key === 'Enter' && handleSearchTransaction()}
-          />
-
-          <div
-            className="cursor-pointer rounded-md border border-green-light p-4 text-green-light"
-            onClick={() => handleSearchTransaction()}
-          >
-            <Search size={22} />
-          </div>
-        </div>
+        <Input
+          placeholder="Busque uma transação"
+          value={searchInputValue}
+          onChange={(e) => {
+            handleSearchTransaction(e?.currentTarget?.value)
+          }}
+        />
       </div>
 
       <main className="mt-3 flex flex-col gap-3">
