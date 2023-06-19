@@ -2,7 +2,11 @@ import { SummaryCard } from './SummaryCard'
 
 export const Summary = () => {
   return (
-    <div className={'relative inline-flex items-center gap-5'}>
+    <div
+      className={
+        'relative flex items-center gap-5 overflow-x-auto whitespace-nowrap'
+      }
+    >
       <SummaryCard
         amount={200}
         transactionType={'income'}
