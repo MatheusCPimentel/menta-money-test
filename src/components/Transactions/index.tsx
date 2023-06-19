@@ -6,10 +6,12 @@ import { useEffect, useState } from 'react'
 import { TransactionCard } from './TransactionCard'
 import { Search } from 'lucide-react'
 import { Input } from '../Input'
+import { Pagination } from '../Pagination'
 
 export const Transactions = () => {
   const [transactions, setTransactions] = useState<Transaction[]>([])
   const [searchInputValue, setSearchInputValue] = useState('')
+  const [currentPage, setCurrentPage] = useState(1)
 
   const [transactionsToShow, setTransactionsToShow] = useState<Transaction[]>(
     [],
@@ -19,7 +21,7 @@ export const Transactions = () => {
     async function getTransactions() {
       try {
         const { data: transactions } = await api.get<Transaction[]>(
-          '/transactions',
+          `/transactions?_page=${currentPage}&_limit=10`,
         )
 
         setTransactions(transactions)
@@ -30,7 +32,7 @@ export const Transactions = () => {
     }
 
     getTransactions()
-  }, [])
+  }, [currentPage])
 
   const handleSearchTransaction = () => {
     const sanitizedSearchInputValue = searchInputValue?.toLowerCase().trim()
@@ -79,6 +81,12 @@ export const Transactions = () => {
           />
         ))}
       </main>
+
+      <Pagination
+        currentPage={currentPage}
+        totalPages={3}
+        onPageChange={(page) => setCurrentPage(page)}
+      />
     </>
   )
 }
