@@ -4,6 +4,8 @@ import { Button } from './Button'
 import { FC } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { Categories } from '@/types/categories'
+import { api } from '@/api/api'
+import { formatDate } from '@/utils/formatDate'
 
 interface NewTransactionModalProps {
   onClose: () => void
@@ -30,7 +32,19 @@ export const NewTransactionModal: FC<NewTransactionModalProps> = (props) => {
 
   const transactionTypeWatch = watch('transactionType')
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    try {
+      await api.post('/transactions', {
+        title: data.title,
+        amount: data.amount,
+        category: data.category,
+        transactionType: data.transactionType,
+        date: formatDate({ isSendingToBackEnd: true }),
+      })
+    } catch (err) {
+      console.log(`Ocorreu um erro ao criar uma nova transação: ${err}`)
+    }
+  }
 
   return (
     <>
